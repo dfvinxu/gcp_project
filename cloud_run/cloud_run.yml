@@ -1,13 +1,24 @@
 steps:
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/the-bridge-cloud-388610/IMAGE', '.']
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/the-bridge-cloud-388610/IMAGE']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'helloworld', '--image', 'gcr.io/the-bridge-cloud-388610/IMAGE', '--region', 'europe-west3-b']
+
+  # Construir la imagen del contenedor
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/the-bridge-cloud-388610/cb_app:1.0', './cloud_run']
+
+  # Subir la imagen al Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/the-bridge-cloud-388610/cb_app:1.0']
+
+  # Desplegar la imagen en Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+    - run
+    - deploy
+    - webapp-run
+    - --image=gcr.io/the-bridge-cloud-388610/cb_app:1.0
+    - --region=europe-west1
+    - --platform=managed
+    - --allow-unauthenticated
+    - --port=5000
 images:
-- gcr.io/the-bridge-cloud-388610/IMAGE
+- 'gcr.io/the-bridge-cloud-388610/cb_app:1.0'
