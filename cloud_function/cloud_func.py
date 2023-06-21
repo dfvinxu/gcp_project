@@ -1,5 +1,5 @@
 import json
-from google.cloud import firestore
+from google.cloud import storage, firestore
 
 
 def cloud_function_handler(event, context):
@@ -21,8 +21,9 @@ def cloud_function_handler(event, context):
     key = event['name']
 
     # Leer el contenido del archivo JSON desde Cloud Storage
-    bucket_data = data[bucket]
-    blob = bucket_data.blob(key)
+    bucket_client = storage.Client()
+    bucket = bucket_client.get_bucket(bucket)
+    blob = bucket.blob(key)
     json_data = blob.download_as_text()
 
     # Convertir el JSON a un diccionario de Python
