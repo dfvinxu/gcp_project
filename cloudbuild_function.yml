@@ -3,7 +3,7 @@ steps:
     args:
       - functions
       - deploy
-      - cloud_function_handler
+      - ./cloud_function/cloud_function.py
       - --runtime
       - python39
       - --source=./cloud_function

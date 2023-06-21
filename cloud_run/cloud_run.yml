@@ -14,7 +14,7 @@ steps:
     args:
     - run
     - deploy
-    - webapp-run
+    - main.py
     - --image=gcr.io/the-bridge-cloud-388610/cb_app:1.0
     - --region=europe-west1
     - --platform=managed
