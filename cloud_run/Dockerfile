@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 # Establece el directorio de trabajo en /app
-WORKDIR /cloud_run
+WORKDIR /app
 
 # Copia los archivos necesarios al directorio de trabajo
 COPY main.py .
