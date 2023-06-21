@@ -3,10 +3,10 @@ steps:
     args:
       - functions
       - deploy
-      - function_ejercicio_gcp
+      - cloud_function_handler
       - --runtime
       - python39
       - --source=./cloud_function
       - --trigger-bucket
-      - gs://ejercicio_completo_gcp
+      - gs://vinxu-cb-bucket
       - --region=europe-west1
