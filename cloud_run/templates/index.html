@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Base de Datos de Usuarios</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Base de Datos de Usuarios</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo electrónico</th>
+        <th>Fecha de registro</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.ID }}</td>
+        <td>{{ user.Nombre }}</td>
+        <td>{{ user["Correo electrónico"] }}</td>
+        <td>{{ user["Fecha de registro"] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Formulario de Registro</h2>
+    <form method="POST" action="/">
+      <label for="idInput">ID:</label>
+      <input type="text" id="idInput" name="id" required /><br /><br />
+
+      <label for="nombreInput">Nombre:</label>
+      <input type="text" id="nombreInput" name="nombre" required /><br /><br />
+
+      <label for="correoInput">Correo electrónico:</label>
+      <input type="email" id="correoInput" name="correo" required /><br /><br />
+      <label for="fechaInput">Fecha de registro:</label>
+      <input
+        type="datetime-local"
+        id="fechaInput"
+        name="fecha"
+        required
+      /><br /><br />
+
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>
