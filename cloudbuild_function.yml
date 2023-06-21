@@ -7,6 +7,6 @@ steps:
       - --runtime
       - python39
       - --source=./cloud_function
-      - --trigger-bucket
-      - gs://vinxu-cb-bucket
+      - --trigger-topic
+      - cloud-builds
       - --region=europe-west1
