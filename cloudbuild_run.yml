@@ -20,5 +20,3 @@ steps:
     - --platform=managed
     - --allow-unauthenticated
     - --port=5000
-images:
-- 'gcr.io/the-bridge-cloud-388610/cb_app:1.0'
