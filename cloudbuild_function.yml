@@ -6,7 +6,7 @@ steps:
       - cloud_function_handler
       - --runtime
       - python39
-      - --source=./cloud_function/main.py
+      - --source=./cloud_function
       - --trigger-topic
       - cloud-builds
       - --region=europe-west1
